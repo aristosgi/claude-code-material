@@ -1,63 +1,93 @@
 ---
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(wc:*), Bash(head:*), Read, Write, Glob
+allowed-tools: Read, Write, Glob, Task
 argument-hint: [target-path] [--exclude pattern]
 description: Generate CLAUDE.md files for repository documentation
 ---
 
-# Repository Documentation Generator
+# Universal Repository Documentation Generator
 
-## Current Repository Structure
-!`find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.cs" -o -name "*.java" -o -name "*.go" -o -name "*.rs" -o -name "package.json" -o -name "*.config.js" -o -name "appsettings.json" -o -name "Dockerfile" -o -name "*.yml" -o -name "*.yaml" \) | grep -v -E "(node_modules|\.git|bin|obj|target|dist|build|\.venv|__pycache__|\.next)" | head -50`
+I'll analyze your codebase and generate comprehensive CLAUDE.md documentation files for each significant directory. This works with any project type: Python, C#, Java, JavaScript/TypeScript, Go, Rust, and more.
 
-## Target Directories for Documentation
-!`find ${1:-.} -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.cs" -o -name "*.java" -o -name "*.go" -o -name "*.rs" -o -name "package.json" -o -name "*.config.js" -o -name "appsettings.json" -o -name "Dockerfile" -o -name "*.yml" -o -name "*.yaml" \) | grep -v -E "(node_modules|\.git|bin|obj|target|dist|build|\.venv|__pycache__|\.next)" | xargs dirname | sort -u`
+## Process
 
-## Your Task
+I'll systematically:
 
-Generate CLAUDE.md files for each target directory above. For each directory:
+1. **Discover project structure** using Glob patterns to find source files across all major languages and frameworks
+2. **Identify significant directories** that contain substantial code or configuration
+3. **Analyze each directory** to understand its purpose, key files, and dependencies
+4. **Generate CLAUDE.md files** with consistent, informative documentation
 
-1. **Analyze the directory contents** - Look at file types, naming patterns, and structure
-2. **Determine the purpose** - What does this directory/module do in the larger system?
-3. **Identify key files** - Which files are most important and what do they do?
-4. **Map dependencies** - Internal dependencies (other directories) and external ones (from package files)
-5. **Document usage patterns** - How do other parts of the system interact with this?
-6. **Note architecture** - Any design patterns, conventions, or architectural decisions
+## File Discovery Patterns
 
-## CLAUDE.md Template Structure
+I'll search for files using these patterns to cover all major project types:
 
-For each directory, create a CLAUDE.md file with this structure:
+**Source Code:**
+- `**/*.py` (Python)
+- `**/*.js`, `**/*.ts`, `**/*.jsx`, `**/*.tsx` (JavaScript/TypeScript)
+- `**/*.cs`, `**/*.csproj`, `**/*.sln` (C#/.NET)
+- `**/*.java`, `**/*.kt` (Java/Kotlin)
+- `**/*.go` (Go)
+- `**/*.rs` (Rust)
+- `**/*.cpp`, `**/*.c`, `**/*.h` (C/C++)
+- `**/*.php` (PHP)
+- `**/*.rb` (Ruby)
+- `**/*.swift` (Swift)
+
+**Configuration & Build:**
+- `**/package.json`, `**/package-lock.json`, `**/yarn.lock` (Node.js)
+- `**/requirements.txt`, `**/pyproject.toml`, `**/setup.py` (Python)
+- `**/Cargo.toml` (Rust)
+- `**/go.mod`, `**/go.sum` (Go)
+- `**/pom.xml`, `**/build.gradle` (Java)
+- `**/Gemfile` (Ruby)
+- `**/composer.json` (PHP)
+- `**/*.config.js`, `**/webpack.config.js`, `**/vite.config.js`
+- `**/appsettings.json`, `**/web.config`
+- `**/Dockerfile`, `**/*.yml`, `**/*.yaml`
+
+## CLAUDE.md Template
+
+For each directory, I'll create a CLAUDE.md file with this structure:
 
 ```markdown
 # [Directory Name]
 
 ## Purpose
-[1-2 sentence description of what this directory/module does]
+[Clear description of what this directory/module does in the system]
 
 ## Key Files
-- **filename.ext**: [Brief description of purpose and functionality]
-- **config.json**: [What this configures and key settings]
+- **filename.ext**: [Purpose and main functionality]
+- **config.json**: [What it configures and important settings]
 
 ## Dependencies
 ### Internal
-- ../other/module (for shared utilities)
-- ../core/types (for type definitions)
+- ../path/to/module (purpose/relationship)
 
 ### External
-- package-name@version (purpose in this module)
+- package-name@version (why it's used here)
 
-## Usage
+## Usage Patterns
 [How other parts of the codebase interact with this module]
 
-## Architecture Notes
-[Design patterns, conventions, architectural decisions used here]
+## Architecture & Design
+[Patterns, conventions, and architectural decisions]
+
+## Notes
+[Any important context for developers working in this area]
 ```
 
-## Process Instructions
+## Exclusion Rules
 
-1. Start with leaf directories (those with no subdirectories containing code)
-2. Work your way up to parent directories
-3. Skip directories that already have CLAUDE.md files unless they need updates
-4. Focus on directories with substantive code/config, not just build artifacts
-5. Keep descriptions concise but informative for LLM context
+I'll automatically skip these common build/cache directories:
+- `node_modules`, `dist`, `build`, `.next`, `out`
+- `bin`, `obj`, `target`
+- `.git`, `.svn`, `.hg`
+- `__pycache__`, `.pytest_cache`, `venv`, `.venv`
+- `vendor`, `cache`, `tmp`, `temp`
 
-Begin generating documentation for the target directories identified above.
+## Your Task Parameters
+
+- **target-path**: ${1:-.} (defaults to current directory)
+- **--exclude**: ${2} (optional additional exclusion pattern)
+
+I'll now analyze your project structure and generate comprehensive documentation for each significant directory.
