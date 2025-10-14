@@ -1,6 +1,6 @@
 # Claude Code Guide - Progress Tracker
 
-## Overall Progress: 5/14 sections complete
+## Overall Progress: 7/14 sections complete
 
 ---
 
@@ -10,13 +10,13 @@
 - [ ] 2. Getting Started with Claude Code
 - [ ] 3. Important Files
 - [ ] 4. Plan, Auto-accept, By-Pass
-- [ ] 5. Tool usage (allow, deny)
+- [x] 5. Tool usage (allow, deny)
 - [ ] 6. Context Window management
 - [ ] 7. Your First Application
 - [ ] 8. Adding functionality to existing codebase
 - [x] 9. Documenting your codebase
 - [x] 10. Leveraging MCP to improve your workflows
-- [ ] 11. Slash Commands
+- [x] 11. Slash Commands
 - [x] 12. Subagents
 - [ ] 13. Claude Code tendencies
 - [x] 14. Use Claude Code with DeepSeek Azure
@@ -166,13 +166,13 @@
 ---
 
 ### 11. Slash Commands
-**Status**: Not Started  
+**Status**: ✅ Completed 
 **Requirements for this section**:
-- [ ] Introduction subsection
-- [ ] Main subsection: "Custom Command Creation and Usage"
-- [ ] Official documentation references
-- [ ] Examples: Required (command examples)
-- [ ] DOS.md: Required (command design best practices)
+- [x] Introduction subsection
+- [x] Main subsection: "Custom Command Creation and Usage"
+- [x] Official documentation references
+- [x] Examples: Required (command examples)
+- [x] DOS.md: Required (command design best practices)
 - [ ] DONTS.md: Optional
 
 **Notes**: Customization feature
