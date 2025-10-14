@@ -73,7 +73,7 @@ This example demonstrates a complete workflow for documenting REST APIs using Cl
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "token": "eyJhbGciOiJIUzI1NiIs...",
+ *       "token": "your-jwt-token-here",
  *       "user": {
  *         "id": "123456",
  *         "email": "user@example.com",

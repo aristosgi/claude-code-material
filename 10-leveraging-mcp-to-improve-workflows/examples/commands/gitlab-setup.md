@@ -21,7 +21,7 @@ Configure GitLab API integration for any project with automatic detection.
 ## Examples
 ```bash
 # Auto-setup using git remote detection
-/gitlab-setup --token am18LHwBCEso9bGVQYa6
+/gitlab-setup --token your-gitlab-token-here
 
 # Setup with custom GitLab URL
 /gitlab-setup --token <token> --url https://gitlab.company.com
